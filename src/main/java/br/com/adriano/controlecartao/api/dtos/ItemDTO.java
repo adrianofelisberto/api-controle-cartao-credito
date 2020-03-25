@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 
-public class ItemDTO {
+public class ItemDTO extends BaseDTO {
 
     private Long id;
 

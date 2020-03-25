@@ -1,9 +1,10 @@
 package br.com.adriano.controlecartao.api.dtos;
 
-public class UsuarioDTO {
+public class UsuarioDTO extends BaseDTO {
 
     private String username;
     private String email;
+    private String nome;
 
     public String getUsername() {
         return username;
@@ -19,5 +20,13 @@ public class UsuarioDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

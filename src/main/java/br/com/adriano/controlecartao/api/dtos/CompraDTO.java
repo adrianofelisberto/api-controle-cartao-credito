@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
 
-public class CompraDTO {
+public class CompraDTO extends BaseDTO {
 
     private Long id;
 

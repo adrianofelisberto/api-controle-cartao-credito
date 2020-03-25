@@ -4,7 +4,7 @@ import br.com.adriano.controlecartao.api.entities.Usuario;
 
 import javax.validation.constraints.NotEmpty;
 
-public class CartaoCreditoDTO {
+public class CartaoCreditoDTO extends BaseDTO {
 
     private Long id;
 
