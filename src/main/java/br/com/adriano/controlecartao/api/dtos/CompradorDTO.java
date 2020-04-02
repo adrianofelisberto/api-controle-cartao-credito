@@ -1,10 +1,12 @@
 package br.com.adriano.controlecartao.api.dtos;
 
 import br.com.adriano.controlecartao.api.entities.Usuario;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CompradorDTO extends BaseDTO{
 
     private Long id;
@@ -13,8 +15,7 @@ public class CompradorDTO extends BaseDTO{
     @Length(min = 5, max = 50, message = "O nome do comprador deve ter entre 5 e 50 caracteres.")
     private String nome;
 
-    @NotEmpty(message = "O usuário não pode ser em branco.")
-    private Usuario usuario;
+    private UsuarioDTO usuario;
 
     public Long getId() {
         return id;
@@ -32,11 +33,11 @@ public class CompradorDTO extends BaseDTO{
         this.nome = nome;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioDTO getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
     }
 }

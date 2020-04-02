@@ -3,51 +3,50 @@ package br.com.adriano.controlecartao.api.services.impl;
 import br.com.adriano.controlecartao.api.dtos.UsuarioCadastroDTO;
 import br.com.adriano.controlecartao.api.dtos.UsuarioDTO;
 import br.com.adriano.controlecartao.api.entities.Usuario;
+import br.com.adriano.controlecartao.api.exceptions.SystemException;
 import br.com.adriano.controlecartao.api.mappers.UsuarioMapper;
 import br.com.adriano.controlecartao.api.repositories.IUsuarioRepository;
-import br.com.adriano.controlecartao.api.services.interfaces.IUsuarioService;
+import br.com.adriano.controlecartao.api.services.interfaces.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.transaction.Transactional;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
-public class UsuarioServiceImpl implements IUsuarioService {
+public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private IUsuarioRepository repository;
 
-    @Override
-    public UsuarioDTO buscarUsuarioPorUsername(String username) { return null; }
 
     @Override
-    public List<UsuarioDTO> buscarTodos() {
-        return null;
+    public Optional<Usuario> buscarUsuarioPorUsername(String username) {
+        return repository.findByUsername(username);
     }
 
     @Override
-    public UsuarioDTO buscarPorId(Long id) {
-        return null;
-    }
+    public UsuarioDTO novoUsuario(UsuarioCadastroDTO dto) throws SystemException {
 
-    @Override
-    public UsuarioDTO salvar(UsuarioDTO objeto) {
-        return null;
-    }
 
-    @Override
-    public UsuarioDTO editar(UsuarioDTO objeto) {
-        return null;
-    }
+        if (Objects.isNull(dto.getPassword())) {
+            throw new SystemException("Senha obrigatória.");
+        }
 
-    @Override
-    public UsuarioDTO remover(Long id) {
-        return null;
-    }
-
-    public UsuarioDTO novoUsuario(UsuarioCadastroDTO dto) {
         Usuario entity = repository.save(UsuarioMapper.convertDTOCadastroToEntity(dto));
-
         return UsuarioMapper.convertToDTO(entity);
+    }
+
+    @Override
+    @Transactional(Transactional.TxType.REQUIRED)
+    public Usuario buscarUsuarioPorId(Long id) throws SystemException {
+        Optional<Usuario> usuario = repository.findById(id);
+
+        if (!usuario.isPresent()) {
+            throw new SystemException("Usuário não encontrado!");
+        }
+
+        return usuario.get();
     }
 }

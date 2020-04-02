@@ -4,11 +4,11 @@ import br.com.adriano.controlecartao.api.dtos.BaseDTO;
 
 import java.util.List;
 
-public interface IBaseService<T extends BaseDTO> {
+public interface BaseService<T extends BaseDTO> {
 
     List<T> buscarTodos();
 
-    T buscarPorId(Long id);
+    T buscarPorId(Long id) throws Exception;
 
     T salvar(T objeto);
 
