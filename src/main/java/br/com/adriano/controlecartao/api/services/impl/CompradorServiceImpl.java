@@ -1,12 +1,11 @@
 package br.com.adriano.controlecartao.api.services.impl;
 
 import br.com.adriano.controlecartao.api.dtos.CompradorDTO;
-import br.com.adriano.controlecartao.api.entities.Compra;
 import br.com.adriano.controlecartao.api.entities.Comprador;
 import br.com.adriano.controlecartao.api.entities.Usuario;
 import br.com.adriano.controlecartao.api.exceptions.SystemException;
 import br.com.adriano.controlecartao.api.mappers.CompradorMapper;
-import br.com.adriano.controlecartao.api.repositories.ICompradorRepository;
+import br.com.adriano.controlecartao.api.repositories.CompradorRepository;
 import br.com.adriano.controlecartao.api.services.interfaces.CompradorService;
 import br.com.adriano.controlecartao.api.services.interfaces.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ import java.util.Optional;
 public class CompradorServiceImpl implements CompradorService {
 
     @Autowired
-    private ICompradorRepository repository;
+    private CompradorRepository repository;
 
     @Autowired
     private UsuarioService usuarioService;

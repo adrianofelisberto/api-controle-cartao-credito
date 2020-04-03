@@ -5,7 +5,7 @@ import br.com.adriano.controlecartao.api.dtos.UsuarioDTO;
 import br.com.adriano.controlecartao.api.entities.Usuario;
 import br.com.adriano.controlecartao.api.exceptions.SystemException;
 import br.com.adriano.controlecartao.api.mappers.UsuarioMapper;
-import br.com.adriano.controlecartao.api.repositories.IUsuarioRepository;
+import br.com.adriano.controlecartao.api.repositories.UsuarioRepository;
 import br.com.adriano.controlecartao.api.services.interfaces.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import java.util.Optional;
 public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
-    private IUsuarioRepository repository;
+    private UsuarioRepository repository;
 
 
     @Override

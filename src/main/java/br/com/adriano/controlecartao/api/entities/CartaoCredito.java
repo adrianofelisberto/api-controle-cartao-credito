@@ -25,6 +25,9 @@ public class CartaoCredito implements Serializable {
     @Column(name = "dia_fechamento", nullable = false)
     private Integer diaFechamento;
 
+    @Column(name = "descricao")
+    private String descricao;
+
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
@@ -75,5 +78,13 @@ public class CartaoCredito implements Serializable {
 
     public void setDiaFechamento(Integer diaFechamento) {
         this.diaFechamento = diaFechamento;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 }

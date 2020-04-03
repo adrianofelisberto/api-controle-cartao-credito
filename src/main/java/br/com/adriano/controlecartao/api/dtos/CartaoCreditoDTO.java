@@ -18,8 +18,9 @@ public class CartaoCreditoDTO extends BaseDTO {
     @NotEmpty(message = "O dia do fechamento não pode ser em branco.")
     private Integer diaFechamento;
 
-    @NotEmpty(message = "O usuário do cartão deve ser informado.")
-    private Usuario usuario;
+    private String descricao;
+
+    private UsuarioDTO usuario;
 
     public Long getId() {
         return id;
@@ -61,11 +62,19 @@ public class CartaoCreditoDTO extends BaseDTO {
         this.diaFechamento = diaFechamento;
     }
 
-    public Usuario getUsuario() {
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public UsuarioDTO getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
     }
 }

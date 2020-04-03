@@ -6,6 +6,12 @@ public class UsuarioDTO extends BaseDTO {
     private String email;
     private String nome;
 
+    public UsuarioDTO() {}
+
+    public UsuarioDTO(String username) {
+        this.username = username;
+    }
+
     public String getUsername() {
         return username;
     }
